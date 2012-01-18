@@ -27,14 +27,32 @@ set( DOXYGEN_EXAMPLE_LIST
   templ
 )
 
-if( ${DOXYGEN_DOT_FOUND} )
-  set( DOXYGEN_EXAMPLE_LIST
-    ${DOXYGEN_EXAMPLE_LIST}
-    diagrams
-  )
-endif()
-
 set( DOXYGEN_TARGET_LIST )
+
+if( ${DOXYGEN_DOT_FOUND} )
+  set( _PROJECTNAME diagrams )
+  set( _OUTPUTDIR ${CMAKE_CURRENT_BINARY_DIR}/${_PROJECTNAME} )
+  set( _INPUTDIR  ${CMAKE_CURRENT_SOURCE_DIR} )
+
+  set( _INPUT " \"${CMAKE_CURRENT_SOURCE_DIR}/diagrams_a.h \\ \n \"" )
+  set( _INPUT "\" ${_INPUT} ${CMAKE_CURRENT_SOURCE_DIR}/diagrams_b.h \\ \n \"" )
+  set( _INPUT "\" ${_INPUT} ${CMAKE_CURRENT_SOURCE_DIR}/diagrams_c.h \\ \n \"" )
+  set( _INPUT "\" ${_INPUT} ${CMAKE_CURRENT_SOURCE_DIR}/diagrams_d.h \\ \n \"" )
+  set( _INPUT "\" ${_INPUT} ${CMAKE_CURRENT_SOURCE_DIR}/diagrams_e.h \"" )
+
+  configure_file( ${CMAKE_SOURCE_DIR}/cmake/project.cfg.in
+    ${CMAKE_CURRENT_BINARY_DIR}/${_PROJECTNAME}.cfg
+    @ONLY
+    )
+
+  set( DOXYGEN_TARGET_LIST ${DOXYGEN_TARGET_LIST} DoxExample_${_PROJECTNAME} )
+
+  add_custom_target( DoxExample_${_PROJECTNAME} ALL
+    COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/${_PROJECTNAME}.cfg
+    MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/${_PROJECTNAME}.cfg
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    )
+endif()
 
 foreach( e ${DOXYGEN_EXAMPLE_LIST} )
   set( _PROJECTNAME ${e} )
