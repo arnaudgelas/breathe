@@ -16,6 +16,8 @@ set( SPECIFIC_EXAMPLE_LIST
   namespacefile
 )
 
+set( SPECIFIC_TARGET_LIST )
+
 foreach( e ${SPECIFIC_EXAMPLE_LIST} )
   set( _PROJECTNAME ${e} )
   set( _OUTPUTDIR ${CMAKE_CURRENT_BINARY_DIR}/${e} )
@@ -34,6 +36,8 @@ foreach( e ${SPECIFIC_EXAMPLE_LIST} )
     ${CMAKE_CURRENT_BINARY_DIR}/${e}.cfg
     @ONLY
   )
+  set( SPECIFIC_TARGET_LIST ${SPECIFIC_TARGET_LIST} SpecificExample_${e} )
+
   add_custom_target( SpecificExample_${e} ALL
     COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/${e}.cfg
     MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/${e}.cfg

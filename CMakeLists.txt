@@ -8,9 +8,8 @@ set( CMAKE_MODULE_PATH
 )
 
 include( ${CMAKE_ROOT}/Modules/Documentation.cmake )
-
-add_subdirectory( testsuite )
-
-add_subdirectory( examples )
+set( BUILD_DOCUMENTATION ON )
 
 add_subdirectory( breathe )
+add_subdirectory( examples )
+add_subdirectory( testsuite )

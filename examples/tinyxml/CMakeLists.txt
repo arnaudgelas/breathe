@@ -2,6 +2,8 @@ set( TINYXML_EXAMPLE_LIST
   tinyxml
 )
 
+set( TINYXML_TARGET_LIST )
+
 foreach( e ${TINYXML_EXAMPLE_LIST} )
   set( _PROJECTNAME ${e} )
   set( _OUTPUTDIR ${CMAKE_CURRENT_BINARY_DIR}/${e} )
@@ -20,6 +22,9 @@ foreach( e ${TINYXML_EXAMPLE_LIST} )
     ${CMAKE_CURRENT_BINARY_DIR}/${e}.cfg
     @ONLY
   )
+
+  set( TINYXML_TARGET_LIST ${TINYXML_TARGET_LIST} ${e} )
+
   add_custom_target( TinyXMLExample_${e} ALL
     COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/${e}.cfg
     MAIN_DEPENDENCY ${CMAKE_CURRENT_BINARY_DIR}/${e}.cfg
