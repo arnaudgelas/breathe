@@ -97,7 +97,7 @@ AfterDoc
 Template
 --------
 .. doxygenindex::
-   :path: ../examples/doxygen/template/xml
+   :path: ../examples/doxygen/templ/xml
 
 Tag
 ---

@@ -19,12 +19,12 @@ import sys, os
 # If your extensions are in another directory, add it here. If the directory
 # is relative to the documentation root, use os.path.abspath to make it
 # absolute, like shown here.
-#sys.path.append(os.path.abspath('.'))
+sys.path.append( os.path.abspath( "@CMAKE_SOURCE_DIR@" ) )
 
 # General configuration
 # ---------------------
 
-sys.path.append( "../" )
+sys.path.append( "@CMAKE_SOURCE_DIR@/testsuite" )
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
@@ -93,19 +93,19 @@ pygments_style = 'sphinx'
 # -----------------------------
 
 breathe_projects = {
-    "class":"../examples/doxygen/class/xml/",
-    "structcmd":"../examples/doxygen/structcmd/xml/",
-    "tinyxml":"../examples/tinyxml/tinyxml/xml/",
-    "restypedef":"../examples/doxygen/restypedef/xml/",
-    "nutshell":"../examples/specific/nutshell/xml/",
-    "rst":"../examples/specific/rst/xml/",
-    "c_file":"../examples/specific/c_file/xml/",
-    "namespacefile":"../examples/specific/namespacefile/xml/",
-    "userdefined":"../examples/specific/userdefined/xml/",
-    "template_function":"../examples/specific/template_function/xml/",
-    "template_class":"../examples/specific/template_class/xml/",
+    "class":"@CMAKE_BINARY_DIR@/examples/doxygen/class/xml/",
+    "structcmd":"@CMAKE_BINARY_DIR@/examples/doxygen/structcmd/xml/",
+    "tinyxml":"@CMAKE_BINARY_DIR@/examples/tinyxml/tinyxml/xml/",
+    "restypedef":"@CMAKE_BINARY_DIR@/examples/doxygen/restypedef/xml/",
+    "nutshell":"@CMAKE_BINARY_DIR@/examples/specific/nutshell/xml/",
+    "rst":"@CMAKE_BINARY_DIR@/examples/specific/rst/xml/",
+    "c_file":"@CMAKE_BINARY_DIR@/examples/specific/c_file/xml/",
+    "namespacefile":"@CMAKE_BINARY_DIR@/examples/specific/namespacefile/xml/",
+    "userdefined":"@CMAKE_BINARY_DIR@/examples/specific/userdefined/xml/",
+    "template_function":"@CMAKE_BINARY_DIR@/examples/specific/template_function/xml/",
+    "template_class":"@CMAKE_BINARY_DIR@/examples/specific/template_class/xml/",
     "template_class_non_type":
-        "../examples/specific/template_class_non_type/xml/",
+        "@CMAKE_BINARY_DIR@/examples/specific/template_class_non_type/xml/",
     }
 
 breathe_default_project = "tinyxml"
